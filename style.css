@@ -1,4 +1,27 @@
+* {
+    background-color: bisque;
+}
+
 h1 {
     text-align: center;
 }
 
+.start-button {
+    text-align: center;
+}
+
+.button {
+    
+}
+
+div p {
+    text-align: center;
+}
+
+h3 {
+    float: right;
+}
+
+.timer-card {
+    float: right;
+}
