@@ -1,6 +1,9 @@
 
 var startButton = document.querySelector('.button');
 var timerElement = document.querySelector('.timer-count');
+var questionsEl = document.querySelector('.questions');
+
+var quizQuestions = ['']
 
 var timer;
 var timerCount;
@@ -11,14 +14,20 @@ startButton.disabled = true;
 startTimer()
 }
 
-startButton.addEventListener('click', startGame);
+
 
 function startTimer() {
     timer = setInterval(function() {
         timerCount--;
-        timerElement.textcontent = timerCount;
+        timerElement.textContent = timerCount;
         if (timerCount === 0) {
             clearInterval(timer);
         }
     }, 1000);
 }
+
+function showQuestions() {
+
+}
+
+startButton.addEventListener('click', startGame);
