@@ -16,12 +16,33 @@ h1 {
 
 div p {
     text-align: center;
+    padding: 20px;
 }
 
-h3 {
-    float: right;
-}
+
 
 .timer-card {
     float: right;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+/*.quiz {
+    text-align: center;
+    background-color: white;
+    overflow: hidden;
+}*/
+
+.quiz {
+    text-align: center;
+}
+
+.choices {
+    background-color: white;
+}
+
+.choices:hover {
+    background-color: aqua;
 }
