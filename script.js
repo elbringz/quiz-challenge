@@ -3,7 +3,43 @@ var startButton = document.querySelector('.button');
 var timerElement = document.querySelector('.timer-count');
 var questionsEl = document.querySelector('.questions');
 
-var quizQuestions = ['']
+let quizQuestions = [
+    {
+        question: 'What HTML element contains Javascript?',
+        choiceA: '',
+        choiceB: '',
+        choiceC: '',
+        answer: 'B'
+    },
+    {
+        question: '',
+        choiceA: '',
+        choiceB: '',
+        choiceC: '',
+        answer: 'A'
+    },
+    {
+        question: '',
+        choiceA: '',
+        choiceB: '',
+        choiceC: '',
+        answer: 'C'
+    },
+    {
+        question: '',
+        choiceA: '',
+        choiceB: '',
+        choiceC: '',
+        answer: 'A'
+    },
+    {
+        question: '',
+        choiceA: '',
+        choiceB: '',
+        choiceC: '',
+        answer: 'B'
+    },
+];
 
 var timer;
 var timerCount;
