@@ -14,12 +14,14 @@
     </header>
     <main>
         <section class="timer-card">
-            <p class="timer-count">75 </p>
+            <p class="timer-count">20 </p>
             <h3>seconds remaining</h3>
         </section>
+    
         <div>
             <p>Press the start button and answer the questions before the time runs out! If you get a question wrong, the timer will go down.</p>
         </div>
+    
         <div class="start-button">
             <button class="button">Start</button>
         </div>
@@ -27,9 +29,9 @@
         <section class="quiz">
             <h2 class="questions">Question</h2>
             
-                <button class="choices" id="A">A</button>
-                <button class="choices" id="B">B</button>
-                <button class="choices" id="C">C</button>
+                <button class="choices" id="A" onclick="checkAnswer('A')">A</button>
+                <button class="choices" id="B" onclick="checkAnswer('B')">B</button>
+                <button class="choices" id="C" onclick="checkAnswer('C')">C</button>
             
         </section>
         

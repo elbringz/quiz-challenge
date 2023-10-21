@@ -6,9 +6,11 @@ var indexQuestion = 0;
 var choiceA = document.getElementById('A');
 var choiceB = document.getElementById('B');
 var choiceC = document.getElementById('C');
+
+var choiceButtons = document.querySelector('choices');
 let quizQuestions = [
     {
-        question: 'What HTML element contains Javascript?',
+        question: 'Which HTML element contains Javascript?',
         choiceA: '<j>',
         choiceB: '<script>',
         choiceC: '<javascript>',
@@ -50,7 +52,7 @@ var timer;
 var timerCount;
 
 function startGame() {
-timerCount = 75;
+timerCount = 20;
 startButton.disabled = true;
 startTimer()
 generateQuestions(console.log)
@@ -74,6 +76,23 @@ questionsEl.innerHTML = '<h2>' + q.question + '<h2>';
 choiceA.textContent = q.choiceA;
 choiceB.textContent = q.choiceB;
 choiceC.textContent = q.choiceC;
+
+}
+var score = 0;
+
+function checkAnswer(answer) {
+if(answer === quizQuestions[indexQuestion].answer) {
+score ++;
+indexQuestion++;
+generateQuestions();
+} else{
+    answerWrong();
+}
+}
+    
+
+function answerWrong(){
+    timerCount--;
 }
 
 startButton.addEventListener('click', startGame);
