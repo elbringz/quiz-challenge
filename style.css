@@ -29,11 +29,7 @@ div p {
     flex-wrap: wrap;
 }
 
-/*.quiz {
-    text-align: center;
-    background-color: white;
-    overflow: hidden;
-}*/
+
 
 .quiz {
     text-align: center;
@@ -41,8 +37,15 @@ div p {
 
 .choices {
     background-color: white;
+    font-size: 20px;
+    padding: 20px;
+    margin: 20px;
 }
 
 .choices:hover {
     background-color: aqua;
+}
+
+.questions{
+    font-size: 30px;
 }
