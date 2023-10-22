@@ -6,11 +6,10 @@ var indexQuestion = 0;
 var choiceA = document.getElementById('A');
 var choiceB = document.getElementById('B');
 var choiceC = document.getElementById('C');
-
 var choiceButtons = document.querySelector('choices');
-let quizQuestions = [
+var quizQuestions = [
     {
-        question: 'Which HTML element contains Javascript?',
+        question: 'Which HTML element contains the Javascript file?',
         choiceA: '<j>',
         choiceB: '<script>',
         choiceC: '<javascript>',
@@ -66,17 +65,18 @@ function startTimer() {
         timerElement.textContent = timerCount;
         if (timerCount === 0) {
             clearInterval(timer);
+            gameOver();
         }
     }, 1000);
 }
 
 function generateQuestions() {
 let q = quizQuestions[indexQuestion];
-questionsEl.innerHTML = '<h2>' + q.question + '<h2>';
+questionsEl.textContent = q.question;
 choiceA.textContent = q.choiceA;
 choiceB.textContent = q.choiceB;
 choiceC.textContent = q.choiceC;
-
+document.querySelector('.answer-status').textContent = '';
 }
 var score = 0;
 
@@ -85,14 +85,22 @@ if(answer === quizQuestions[indexQuestion].answer) {
 score ++;
 indexQuestion++;
 generateQuestions();
-} else{
+}else{
     answerWrong();
 }
 }
     
 
 function answerWrong(){
-    timerCount--;
+    timerCount --;
+    document.querySelector('.answer-status').textContent = 'Incorrect (-1 second)';
 }
+
+function gameOver() {
+    choiceButtons.disabled = true;
+    document.querySelector('.user-score').textContent = score;
+}
+
+
 
 startButton.addEventListener('click', startGame);

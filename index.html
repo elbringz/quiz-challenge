@@ -14,7 +14,7 @@
     </header>
     <main>
         <section class="timer-card">
-            <p class="timer-count">20 </p>
+            <p class="timer-count"> </p>
             <h3>seconds remaining</h3>
         </section>
     
@@ -27,13 +27,15 @@
         </div>
     
         <section class="quiz">
-            <h2 class="questions">Question</h2>
-            
-                <button class="choices" id="A" onclick="checkAnswer('A')">A</button>
-                <button class="choices" id="B" onclick="checkAnswer('B')">B</button>
-                <button class="choices" id="C" onclick="checkAnswer('C')">C</button>
-            
+            <h2 class="questions" class="display"></h2>
+            <button class="choices" id="A" onclick="checkAnswer('A')"></button>
+            <button class="choices" id="B" onclick="checkAnswer('B')"></button>
+            <button class="choices" id="C" onclick="checkAnswer('C')"></button>
+            <p class="answer-status"></p>
         </section>
+        <div>
+            <p class="user-score"></p>
+        </div>
         
         
     </main>

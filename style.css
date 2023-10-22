@@ -33,6 +33,10 @@ div p {
 
 .quiz {
     text-align: center;
+    border: 3px solid black;
+    padding-left: 15px;
+    margin: 15px;
+    background-color: cadetblue;
 }
 
 .choices {
@@ -48,4 +52,17 @@ div p {
 
 .questions{
     font-size: 30px;
+    background-color: cadetblue;
+    
+}
+
+.answer-status {
+    color: red;
+    font-size: 25px;
+    font-style: italic;
+    background-color: cadetblue;
+}
+
+.hide {
+    visibility: hidden;
 }
