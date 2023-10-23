@@ -73,3 +73,9 @@ div p {
 .game-over {
     text-align: center;
 }
+.scorecard {
+    text-align: center;
+}
+.display-scores {
+    font-size: 50px;
+}

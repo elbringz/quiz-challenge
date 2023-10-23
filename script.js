@@ -11,6 +11,7 @@ var q = '';
 var initSubmitBtn = document.querySelector('.initSubmit');
 var initText = document.querySelector('.initText');
 var highScore = JSON.stringify(score) + initText;
+var highScoreText = document.querySelector('.display-scores');
 var quizQuestions = [
     {
         question: 'Which HTML element contains the Javascript file?',
@@ -142,6 +143,11 @@ if(score === 50 || timerCount === 0){
     return;
 }
 }
+function submit() {
+    localStorage.setItem('User', JSON.stringify(initText.value));
+}
+function generateScores() {
+highScoreText.textContent = 'User: ' + localStorage.getItem('User') + ' Score: ' + localStorage.getItem('Score');
+}
 buttonController();
 startButton.addEventListener('click', startGame);
-initSubmitBtn.addEventListener('click', localStorage.setItem('Initials', JSON.stringify(initText.textContent)));
