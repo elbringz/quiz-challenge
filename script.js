@@ -1,4 +1,4 @@
-
+//Declares variables to be used throughout javascript code
 var startButton = document.querySelector('.button');
 var timerElement = document.querySelector('.timer-count');
 var questionsEl = document.querySelector('.questions');
@@ -12,6 +12,7 @@ var initSubmitBtn = document.querySelector('.initSubmit');
 var initText = document.querySelector('.initText');
 var highScore = JSON.stringify(score) + initText;
 var highScoreText = document.querySelector('.display-scores');
+//Object to store and access questions and answers
 var quizQuestions = [
     {
         question: 'Which HTML element contains the Javascript file?',
@@ -54,7 +55,7 @@ var lastIndexQuestion = quizQuestions.length - 1;
 
 var timer;
 var timerCount;
-
+//function that starts the game
 function startGame() {
 var buttonList = document.querySelectorAll('.choices')
 buttonList.forEach(button =>{
@@ -67,7 +68,7 @@ q = generateQuestions(q)
 }
 
 
-
+//function that starts the timer when the game starts
 function startTimer() {
     timer = setInterval(function() {
         timerCount--;
@@ -78,7 +79,7 @@ function startTimer() {
         }
     }, 1000);
 }
-
+//function that generates the questions and answers when the game starts
 function generateQuestions(q) {
 q = quizQuestions.pop();
 questionsEl.textContent = q.question;
@@ -94,7 +95,7 @@ return q;
 }
 }
 var score = 0;
-
+//function that checks the answer when a button is clicked
 function checkAnswer(answer) {
 var test = q.answer;
 if(answer == q.answer) {
@@ -115,13 +116,13 @@ q = generateQuestions(q);
 }
 }
     
-
+//function that subtracts time and score when answer is wrong
 function answerWrong(){
     timerCount --;
     score -=3;
     document.querySelector('.answer-status').textContent = 'Incorrect (-1 second)';
 }
-
+//function that saves score and disables the answer buttons when the game is over
 function gameOver() {
     choiceButtons.forEach(buttonDisable => {
         buttonDisable.disable = true;
@@ -132,6 +133,7 @@ function gameOver() {
 
 
 }
+//controls answer check when buttons are clicked
 function buttonController(){
 choiceButtons[0].addEventListener('click', lambda = A => checkAnswer('A'));
 choiceButtons[1].addEventListener('click', lambda = B => checkAnswer('B'));
@@ -143,9 +145,11 @@ if(score === 50 || timerCount === 0){
     return;
 }
 }
+//saves initials to local storage when submit button is clicked
 function submit() {
     localStorage.setItem('User', JSON.stringify(initText.value));
 }
+//Shows highscore when button is clicked
 function generateScores() {
 highScoreText.textContent = 'User: ' + localStorage.getItem('User') + ' Score: ' + localStorage.getItem('Score');
 }
