@@ -119,7 +119,7 @@ q = generateQuestions(q);
 //function that subtracts time and score when answer is wrong
 function answerWrong(){
     timerCount --;
-    score -=3;
+    score --;
     document.querySelector('.answer-status').textContent = 'Incorrect (-1 second)';
 }
 //function that saves score and disables the answer buttons when the game is over
@@ -128,7 +128,7 @@ function gameOver() {
         buttonDisable.disable = true;
     })
     var scoreText = document.querySelector('.user-score')
-    scoreText.textContent = 'Your score: ' + score + '/50';
+    scoreText.textContent = 'Your score: ' + score;
     localStorage.setItem('Score', JSON.stringify(score));
 
 
@@ -147,7 +147,7 @@ if(score === 50 || timerCount === 0){
 }
 //saves initials to local storage when submit button is clicked
 function submit() {
-    localStorage.setItem('User', JSON.stringify(initText.value));
+    localStorage.setItem('User', initText.value);
 }
 //Shows highscore when button is clicked
 function generateScores() {
