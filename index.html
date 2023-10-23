@@ -28,13 +28,15 @@
     
         <section class="quiz">
             <h2 class="questions" class="display"></h2>
-            <button class="choices" id="A" onclick="checkAnswer('A')"></button>
-            <button class="choices" id="B" onclick="checkAnswer('B')"></button>
-            <button class="choices" id="C" onclick="checkAnswer('C')"></button>
+            <button type="button" class="choices" id="A"></button>
+            <button type="button" class="choices" id="B"></button>
+            <button type="button" class="choices" id="C"></button>
             <p class="answer-status"></p>
         </section>
-        <div>
+        <div class="game-over">
             <p class="user-score"></p>
+            <input class="initText" type="text">
+            <button class="initSubmit" type="submit">Submit Initials</button>
         </div>
         
         

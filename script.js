@@ -6,7 +6,11 @@ var indexQuestion = 0;
 var choiceA = document.getElementById('A');
 var choiceB = document.getElementById('B');
 var choiceC = document.getElementById('C');
-var choiceButtons = document.querySelector('choices');
+var choiceButtons = document.querySelectorAll('.choices');
+var q = '';
+var initSubmitBtn = document.querySelector('.initSubmit');
+var initText = document.querySelector('.initText');
+var highScore = JSON.stringify(score) + initText;
 var quizQuestions = [
     {
         question: 'Which HTML element contains the Javascript file?',
@@ -51,10 +55,14 @@ var timer;
 var timerCount;
 
 function startGame() {
+var buttonList = document.querySelectorAll('.choices')
+buttonList.forEach(button =>{
+    button.style.display='inline';
+})
 timerCount = 20;
 startButton.disabled = true;
 startTimer()
-generateQuestions(console.log)
+q = generateQuestions(q)
 }
 
 
@@ -63,29 +71,45 @@ function startTimer() {
     timer = setInterval(function() {
         timerCount--;
         timerElement.textContent = timerCount;
-        if (timerCount === 0) {
+        if (timerCount <= 0 || score > 40) {
             clearInterval(timer);
             gameOver();
         }
     }, 1000);
 }
 
-function generateQuestions() {
-let q = quizQuestions[indexQuestion];
+function generateQuestions(q) {
+q = quizQuestions.pop();
 questionsEl.textContent = q.question;
 choiceA.textContent = q.choiceA;
 choiceB.textContent = q.choiceB;
 choiceC.textContent = q.choiceC;
 document.querySelector('.answer-status').textContent = '';
+if(timerCount === 0 || score === 50 || q >= quizQuestions.length){
+    gameOver();
+    
+} else{
+return q;
+}
 }
 var score = 0;
 
 function checkAnswer(answer) {
-if(answer === quizQuestions[indexQuestion].answer) {
-score ++;
-indexQuestion++;
-generateQuestions();
-}else{
+var test = q.answer;
+if(answer == q.answer) {
+score +=10;
+if(quizQuestions.length > 0) {
+q = generateQuestions(q);
+} else{
+    quizQuestions[0] = -1;
+}
+}else if(quizQuestions[0] == -1 || score === 50 || timerCount === 0) {
+    gameOver();
+    buttonList.forEach(button =>{
+        button.style.display='none';
+    })
+    return;
+} else {
     answerWrong();
 }
 }
@@ -93,14 +117,31 @@ generateQuestions();
 
 function answerWrong(){
     timerCount --;
+    score -=3;
     document.querySelector('.answer-status').textContent = 'Incorrect (-1 second)';
 }
 
 function gameOver() {
-    choiceButtons.disabled = true;
-    document.querySelector('.user-score').textContent = score;
+    choiceButtons.forEach(buttonDisable => {
+        buttonDisable.disable = true;
+    })
+    var scoreText = document.querySelector('.user-score')
+    scoreText.textContent = 'Your score: ' + score + '/50';
+    localStorage.setItem('Score', JSON.stringify(score));
+
+
 }
-
-
-
+function buttonController(){
+choiceButtons[0].addEventListener('click', lambda = A => checkAnswer('A'));
+choiceButtons[1].addEventListener('click', lambda = B => checkAnswer('B'));
+choiceButtons[2].addEventListener('click', lambda = C => checkAnswer('C'));
+if(score === 50 || timerCount === 0){
+    buttonList.forEach(button =>{
+        button.style.display='none';
+    })
+    return;
+}
+}
+buttonController();
 startButton.addEventListener('click', startGame);
+initSubmitBtn.addEventListener('click', localStorage.setItem('Initials', JSON.stringify(initText.textContent)));
